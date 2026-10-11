@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khaja Hussain Dudekula | Data Science Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7FB;--surface:#FFFFFF;--ink:#14213D;--muted:#566079;--line:#DDE3EF;
+  --accent:#3447D9;--accent-ink:#FFFFFF;--warm:#E8A33D;--soft:#E9EDFB;
+  --head:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0E1424;--surface:#161E33;--ink:#EDF0FA;--muted:#A3ADC7;--line:#27314D;--accent:#8C9BFF;--accent-ink:#0E1424;--soft:#1F2947}
+}
+:root[data-theme="dark"]{--bg:#0E1424;--surface:#161E33;--ink:#EDF0FA;--muted:#A3ADC7;--line:#27314D;--accent:#8C9BFF;--accent-ink:#0E1424;--soft:#1F2947}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 var(--body);transition:background .3s,color .3s}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;margin-bottom:34px}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:800 1.25rem var(--head);text-decoration:none;letter-spacing:-.02em}
+.links{display:flex;gap:22px;align-items:center}
+.links a{text-decoration:none;font-size:.95rem;color:var(--muted);font-weight:500}
+.links a:hover{color:var(--ink)}
+#theme{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:1.1rem;display:grid;place-items:center}
+@media(max-width:760px){.links a{display:none}}
+
+/* hero */
+.hero{padding:70px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.role{display:inline-block;background:var(--soft);color:var(--accent);padding:6px 14px;border-radius:99px;font-weight:600;font-size:.92rem;margin-bottom:20px}
+h1{font-size:clamp(2.6rem,8vw,5rem);font-weight:800;letter-spacing:-.035em}
+.lead{max-width:34em;color:var(--muted);font-size:1.15rem;margin:22px 0 30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:12px;font-weight:600;text-decoration:none;border:1.5px solid var(--accent);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent)}
+.chart{width:100%;height:auto;color:var(--accent)}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .line{fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:700;stroke-dashoffset:700;animation:draw 2.2s .3s ease-out forwards}
+.chart .dot{fill:var(--warm);opacity:0;animation:pop .4s 2.3s forwards}
+.chart .bar{fill:var(--soft)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+@media(max-width:760px){.hero-grid{grid-template-columns:1fr}.chart{max-width:420px}}
+
+/* about */
+.about p{max-width:40em;font-size:1.15rem;margin:0 0 16px}
+.langs{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.langs span,.chip{background:var(--surface);border:1px solid var(--line);padding:6px 14px;border-radius:99px;font-size:.95rem;font-weight:500}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+.card h3{font-size:1.15rem;margin-bottom:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips .chip{background:var(--soft);border-color:transparent}
+
+/* timeline */
+.timeline{position:relative;margin-left:8px;padding-left:30px;border-left:2px solid var(--line)}
+.item{position:relative;margin-bottom:28px}
+.item::before{content:"";position:absolute;left:-39px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.item.empty::before{border-color:var(--warm)}
+.item time{color:var(--muted);font-size:.9rem;font-weight:500}
+.item h3{font-size:1.25rem;margin:4px 0}
+.item p{margin:6px 0 0;color:var(--muted)}
+.ph{border:1.5px dashed var(--warm);border-radius:8px;padding:2px 8px;color:var(--ink)}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.project{display:flex;flex-direction:column;gap:12px;transition:transform .25s,border-color .25s}
+.project:hover{transform:translateY(-4px);border-color:var(--accent)}
+.thumb{height:120px;border-radius:10px;border:1.5px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:.9rem;background:var(--bg)}
+.project h3{font-size:1.15rem}
+.project p{margin:0;color:var(--muted);font-size:.98rem}
+
+/* contact */
+.contact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.contact-list a,.contact-list div{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-decoration:none;overflow-wrap:anywhere;transition:border-color .2s}
+.contact-list a:hover{border-color:var(--accent)}
+.contact-list small{display:block;color:var(--muted);font-size:.85rem;margin-bottom:4px}
+footer{padding:30px 0 40px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .chart .line{animation:none;stroke-dashoffset:0}.chart .dot{animation:none;opacity:1}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+  <a class="logo" href="#top" aria-label="Back to top">KH</a>
+  <div class="links">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+    <button id="theme" aria-label="Switch between light and dark mode">🌙</button>
+  </div>
+</nav></div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="role">B.Tech CSE (Data Science) Student</span>
+    <h1>Khaja Hussain Dudekula</h1>
+    <p class="lead">Data science student with hands-on skills in Python, SQL, data analysis, visualization and machine learning, seeking an entry-level IT role.</p>
+    <div class="btns"><a class="btn primary" href="#contact">Get in touch</a><a class="btn ghost" href="#skills">See my skills</a></div>
+  </div>
+  <svg class="chart" viewBox="0 0 360 280" role="img" aria-label="Decorative rising line chart">
+    <g class="grid"><line x1="20" y1="40" x2="340" y2="40"/><line x1="20" y1="100" x2="340" y2="100"/><line x1="20" y1="160" x2="340" y2="160"/><line x1="20" y1="220" x2="340" y2="220"/></g>
+    <rect class="bar" x="40" y="170" width="36" height="50" rx="6"/><rect class="bar" x="110" y="140" width="36" height="80" rx="6"/><rect class="bar" x="180" y="110" width="36" height="110" rx="6"/><rect class="bar" x="250" y="70" width="36" height="150" rx="6"/>
+    <path class="line" d="M30 200 C80 190 100 150 150 135 S220 110 255 75 S310 40 335 30"/>
+    <circle class="dot" cx="335" cy="30" r="9"/>
+  </svg>
+</div></section>
+
+<section id="about"><div class="wrap about rv">
+  <h2>About me</h2>
+  <p>I'm a B.Tech Computer Science &amp; Engineering (Data Science) student, expected to graduate in 2027.</p>
+  <p>I work with Python, SQL, data analysis, visualization and machine learning. I'm looking for an entry-level IT role where I can apply my analytical thinking, learn quickly and contribute to real-world, data-driven projects.</p>
+  <div class="langs" aria-label="Languages known"><span>English</span><span>Hindi</span><span>Telugu</span></div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2 class="rv">Skills</h2>
+  <div class="skills rv">
+    <div class="card"><h3>Languages</h3><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span></div></div>
+    <div class="card"><h3>Data analysis</h3><div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Excel</span></div></div>
+    <div class="card"><h3>Visualization</h3><div class="chips"><span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">Power BI</span><span class="chip">Tableau</span></div></div>
+    <div class="card"><h3>ML / AI</h3><div class="chips"><span class="chip">Scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">Keras</span></div></div>
+    <div class="card"><h3>Statistics</h3><div class="chips"><span class="chip">Probability</span><span class="chip">Hypothesis Testing</span><span class="chip">Linear Algebra</span></div></div>
+    <div class="card"><h3>Databases</h3><div class="chips"><span class="chip">MySQL</span></div></div>
+  </div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <h2 class="rv">Education</h2>
+  <div class="timeline rv">
+    <div class="item"><time>Expected graduation: 2027</time><h3>B.Tech, Computer Science &amp; Engineering (Data Science)</h3><p>Currently pursuing</p></div>
+    <div class="item"><time>2023</time><h3>Intermediate (12th)</h3><p>Sri Chaitanya Junior College, Kurnool. 72.2%</p></div>
+    <div class="item"><time>2021</time><h3>SSC (10th)</h3><p>Sri Chaitanya School, Nandikotkur. 100%</p></div>
+  </div>
+  <h3 class="rv" style="margin:40px 0 18px">Certifications &amp; courses</h3>
+  <div class="skills rv">
+    <div class="card"><h3>Data Analytics</h3><p style="margin:0;color:var(--muted)">Novitech<br>Jun - Jul 2025</p></div>
+    <div class="card"><h3>Python Using AI Workshop</h3><p style="margin:0;color:var(--muted)">AI For Techies<br>Aug 2025</p></div>
+    <div class="card"><h3>Intro to Prompt Engineering</h3><p style="margin:0;color:var(--muted)">IBM, ID: AI013<br>Feb 2024</p></div>
+    <div class="card"><h3>Excel for Beginners</h3><p style="margin:0;color:var(--muted)">Davidson College<br>Mar 2024</p></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2 class="rv">Contact</h2>
+  <div class="contact-list rv">
+    <a href="mailto:khajah513@gmail.com"><small>Email</small>khajah513@gmail.com</a>
+    <a href="https://linkedin.com/in/d-khaja-hussain-942ba8405" target="_blank" rel="noopener"><small>LinkedIn</small>linkedin.com/in/d-khaja-hussain-942ba8405</a>
+    <a href="tel:+918332017295"><small>Phone</small>+91 83320 17295</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Khaja Hussain Dudekula</div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme');
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches}
+  function paint(){btn.textContent=isDark()?'☀️':'🌙'}
+  try{var s=localStorage.getItem('theme');if(s)root.setAttribute('data-theme',s)}catch(e){}
+  paint();
+  btn.addEventListener('click',function(){
+    var n=isDark()?'light':'dark';root.setAttribute('data-theme',n);paint();
+    try{localStorage.setItem('theme',n)}catch(e){}
+  });
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+})();
+</script>
+</body>
+</html>
